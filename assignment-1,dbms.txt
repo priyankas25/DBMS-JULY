@@ -1,0 +1,167 @@
+CREATE DATABASE SALES;
+
+USE SALES;
+
+CREATE CAMMAND--------------
+
+CREATE TABLE SALESPEOPLE
+(
+	snum INT(4),
+	sname VARCHAR(10),
+	city VARCHAR(10),
+	comm FLOAT(3,2),
+	PRIMARY KEY(snum)
+);
+
+CREATE TABLE CUSTOMERS
+(
+	cnum INT(4),
+	cname VARCHAR(10),
+	city VARCHAR(10),
+	rating INT(4),
+	snum INT(4),
+	PRIMARY KEY(cnum),
+	FOREIGN KEY(snum) REFERENCES SALESPEOPLE(snum)
+);
+
+CREATE TABLE ORDERS
+(
+	onum INT(4),
+	amt float(7,2),
+	odate DATE,
+	cnum INT(4),
+	snum INT(4),
+	PRIMARY KEY(onum),
+	FOREIGN KEY(snum) REFERENCES SALESPEOPLE(snum),
+	FOREIGN KEY(Cnum) REFERENCES CUSTOMERS(cnum)
+);
+
+INSERT CAMMAND----------------------------
+
+TABLE SALESPEOPLE-
+
+INSERT INTO SALESPEOPLE(snum,sname,city,comm) values(1001,'Peel','London',.12);
+
+INSERT INTO SALESPEOPLE(snum,sname,city,comm) values(1002,'serres','san joes',.13);
+
+INSERT INTO SALESPEOPLE(snum,sname,city,comm) values(1004,'motika','London',.11);
+
+INSERT INTO SALESPEOPLE(snum,sname,city,comm) values(1007,'rifkin','Barcelona',.15);
+
+INSERT INTO SALESPEOPLE(snum,sname,city,comm) values(1003,'axelord','New York',.10);
+
+TABLE CUSTOMER-
+
+INSERT INTO CUSTOMERS(cnum,cname,city,rating,snum) values(2001,'Hoffman','London',100,1001);
+
+INSERT INTO CUSTOMERS(cnum,cname,city,rating,snum) values(2002,'Giovanni','Rome',200,1003);
+
+INSERT INTO CUSTOMERS(cnum,cname,city,rating,snum) values(2003,'Liu','San Jose',200,1002);
+
+INSERT INTO CUSTOMERS(cnum,cname,city,rating,snum) values(2004,'Grass','Berlin',300,1002);
+
+INSERT INTO CUSTOMERS(cnum,cname,city,rating,snum) values(2006,'Clemens','London',100,1001);
+
+INSERT INTO CUSTOMERS(cnum,cname,city,rating,snum) values(2008,'Cisneros','San joes',300,1007);
+
+INSERT INTO CUSTOMERS(cnum,cname,city,rating,snum) values(2007,'Pereira','Rome',100,1004);
+
+TABLE ORDERS-
+
+
+INSERT INTO ORDERS(onum,amt,odate,cnum,snum) values(3001,18.69,'1990-10-03',2008,1007);
+
+INSERT INTO ORDERS(onum,amt,odate,cnum,snum) values(3003,767.19,'1990-10-03',2001,1001);
+
+INSERT INTO ORDERS(onum,amt,odate,cnum,snum) values(3002,1900.10,'1990-10-03',2007,1004);
+
+INSERT INTO ORDERS(onum,amt,odate,cnum,snum) values(3005,5160.45,'1990-10-03',2003,1002);
+
+INSERT INTO ORDERS(onum,amt,odate,cnum,snum) values(3006,1098.16,'1990-10-03',2008,1007);
+
+INSERT INTO ORDERS(onum,amt,odate,cnum,snum) values(3009,1713.23,'1990-10-04',2008,1007);
+
+INSERT INTO ORDERS(onum,amt,odate,cnum,snum) values(3007,75.75,'1990-10-04',2004,1002);
+
+INSERT INTO ORDERS(onum,amt,odate,cnum,snum) values(3008,4723.00,'1990-10-05',2006,1001);
+
+INSERT INTO ORDERS(onum,amt,odate,cnum,snum) values(3010,1309.95,'1990-10-06',2004,1002);
+
+INSERT INTO ORDERS(onum,amt,odate,cnum,snum) values(3011,9891.88,'1990-10-06',2006,1001);
+
+--------------------------------------------------EXCERCISE-----------------------------------------
+
+CREATE TABLE SEMP
+(
+	EMPNO CHAR(4),
+	EMPNAME CHAR(20),
+	BASIC FLOAT(9,2),
+	DEPTNO CHAR(2),
+	DEPTHEAD CHAR(4)
+);
+
+CREATE TABLE SDEPT
+(
+	DEPTNO CHAR(2),
+	DEPTNAME CHAR(15)
+);
+
+INSERT INTO SDEPT(DEPTNO,DEPTNAME) VALUES('10','DEVELOPMENT');
+
+INSERT INTO SDEPT(DEPTNO,DEPTNAME) VALUES('20','TRAINING');
+
+INSERT INTO SEMP(EMPNO,EMPNAME,BASIC,DEPTNO) VALUES('0001','SUNIL',6000,'10');
+
+INSERT INTO SEMP(EMPNO,EMPNAME,BASIC,DEPTNO) VALUES('0002','HIREN',8000,'20');
+
+INSERT INTO SEMP(EMPNO,EMPNAME,BASIC,DEPTNO,DEPTHEAD) VALUES('0003','ALI',4000,'10','0001');
+
+INSERT INTO SEMP(EMPNO,EMPNAME,BASIC,DEPTHEAD) VALUES('0004','GEORGE',6000,'0002');
+
+
+CREATE TABLE SUPPLIER
+(
+	`S#` VARCHAR(4),
+	SNAME CHAR(15),
+	STATUS INT(10),
+	CITY CHAR(10)
+);
+
+CREATE TABLE PARTS
+(
+	`P#` VARCHAR(4),
+	PNAME CHAR(15),
+	COLOR CHAR(10),
+	WEIGHT VARCHAR(10),
+	CITY CHAR(10)
+);
+
+CREATE TABLE PROJECT
+(
+	`J#` VARCHAR(4),
+	JNAME CHAR(15),
+	CITY CHAR(10)
+);
+
+CREATE TABLE SUPPLIER-PARTS-PROJECT
+(
+	`S#` VARCHAR(4),
+	`P#` VARCHAR(4),
+	`J#` VARCHAR(4),
+	QTY INT(10)
+);
+
+ INSERT INTO SUPPLIER VALUES('S3','RIO',30,'PARIS');
+
+ INSERT INTO SUPPLIER VALUES('S2','HARRY',20,'ATHENS');
+
+ INSERT INTO SUPPLIER VALUES('S2','HARRY',20,'ATHENS');
+
+SELECT * FROM SUPPLIER;
+
+SELECT `S#`,SNAME FROM SUPPLIER;
+
+SELECT * FROM SUPPLIER WHERE CITY='LONDON';
+
+SELECT * FROM SUPPLIER WHERE CITY='ATHENS' OR CITY= 'PARIS';
+
