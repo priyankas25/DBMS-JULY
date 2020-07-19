@@ -1,0 +1,45 @@
+			ASSIGNMENT-6
+
+1) Write two different queries that would produce all orders taken on October 3rd or 
+4th, 1990.
+ans-  select * from orders where odate between '1990-10-03' and '1990-10-04';
+
+select * from orders where odate in('1990-10-03','1990-10-04');
+
+2) Write a query that selects all of the customers serviced by Peel or Motika.
+(Hint: the snum field relates the two tables to one another).
+
+ans-select * from customers,salespeople where salespeople.snum = customers.snum having salespeople.snum in(1001,1004);
+
++------+---------+--------+--------+------+------+--------+--------+------+
+| cnum | cname   | city   | rating | snum | snum | sname  | city   | comm |
++------+---------+--------+--------+------+------+--------+--------+------+
+| 2001 | Hoffman | London |    100 | 1001 | 1001 | Peel   | London | 0.12 |
+| 2006 | Clemens | London |    100 | 1001 | 1001 | Peel   | London | 0.12 |
+| 2007 | Pereira | Rome   |    100 | 1004 | 1004 | motika | London | 0.11 |
++------+---------+--------+--------+------+------+--------+--------+------+
+
+3) Write a query that will produce all the customers whose names begin with a letter 
+from ‘A’ to ‘G’.
+
+ans-select * from customers where cname like 'A%' or cname like 'G%';
++------+----------+--------+--------+------+
+| cnum | cname    | city   | rating | snum |
++------+----------+--------+--------+------+
+| 2002 | Giovanni | Rome   |    200 | 1003 |
+| 2004 | Grass    | Berlin |    300 | 1002 |
++------+----------+--------+--------+------+
+
+4) Write a query that selects all customers whose names begin with the letter ‘C’.
+ans-
+select * from customers where cname like 'C%';
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San joes |    300 | 1007 |
++------+----------+----------+--------+------+
+
+5) Write a query that selects all orders except those with zeroes or NULLs in the amt field.
+ans-SELECT* FROM ORDERS WHERE AMT != NULL OR AMT <> 0;
+

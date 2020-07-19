@@ -1,0 +1,63 @@
+			EXCERCISE-2
+
+1. Display the Supplier table in the descending order of CITY.
+
+ANS-select * from supplier order by city;
+
+2. Display the Part Table in the ascending order of CITY and within the city in 
+the ascending order of Part names.
+
+ans- select * from parts order by city, pname;
++------+--------+--------+--------+--------+
+| P#   | PNAME  | COLOR  | WEIGHT | CITY   |
++------+--------+--------+--------+--------+
+| p2   | SAM    | RED    | 43kg   | ATHENS |
+| p1   | poal   | orange | 50kg   | London |
+| p3   | adward | yellow | 40kg   | PARIS  |
++------+--------+--------+--------+--------+
+
+3. Display all the Suppliers with a status between 10 and 20.
+
+ans-select * from supplier where status between 10 and 20;
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | ALI   |     10 | LONDON |
+| S2   | HARRY |     20 | ATHENS |
++------+-------+--------+--------+
+
+4. Display all the Parts and their Weight, which are not in the range of 10 and 15.
+ans-
+select pname, weight from parts where weight not between '10kg' and '15kg';
++--------+--------+
+| pname  | weight |
++--------+--------+
+| poal   | 50kg   |
+| SAM    | 43kg   |
+| adward | 40kg   |
++--------+--------+
+
+5. Display all the Part names starting with the letter ‘S’.
+ans-select pname from parts where pname like 'S%';
++-------+
+| pname |
++-------+
+| SAM   |
++-------+
+
+6. Display all the Suppliers, belonging to cities starting with the letter ‘L’.
+ans-select * from supplier where city like 'L%';
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | ALI   |     10 | LONDON |
++------+-------+--------+--------+
+
+7. Display all the Projects, with the third letter in JNAME as ‘n’.
+ans-select * from project where jname like '%%n%';
++------+-------+--------+
+| J#   | JNAME | CITY   |
++------+-------+--------+
+| j2   | jan   | Athens |
+| j3   | june  | Paris  |
++------+-------+--------+
