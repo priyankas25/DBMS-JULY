@@ -1,0 +1,69 @@
+			excercise-3
+
+1. Display all the Supplier names with the initial letter capital.
+
+ans-select concat(upper(substr(sname,1,1)),lower(substr(sname,2))) as initcap from supplier;
++---------+
+| initcap |
++---------+
+| Ali     |
+| Harry   |
+| Rio     |
++---------+
+
+2. Display all the Supplier names in upper case.
+
+ans-select  upper(sname) from supplier;
+
+3. Display all the Supplier names in lower case.
+
+ans-select lower(sname) from supplier;
+
+4. Display all the Supplier names padded to 25 characters, with spaces on the left.
+
+ans- select lpad(sname,25,' ') as name from supplier;
++---------------------------+
+| name                      |
++---------------------------+
+|                       ALI |
+|                     HARRY |
+|                       RIO |
++---------------------------+
+
+5. Display all the Supplier names (with ‘la’ replaced by ‘ro’). 
+HINT: REPLACE.
+
+ans-select replace(sname,'AL','RO') as name from supplier;
++-------+
+| name  |
++-------+
+| ROI   |
+| HARRY |
+| RIO   |
++-------+
+
+6. Implement the above command such that ‘l’ is replaced with ‘r’ and ‘a’ is replaced with ‘o’.
+
+ans-select replace(replace(sname,'I','R'),'A','O') from supplier;
++-----------------------------------------+
+| replace(replace(sname,'I','R'),'A','O') |
++-----------------------------------------+
+| OLR                                     |
+| HORRY                                   |
+| RRO                                     |
++-----------------------------------------+
+
+7. Display the Supplier names and the lengths of the names.
+
+ans- select sname,length(sname) as length from supplier;
++-------+--------+
+| sname | length |
++-------+--------+
+| ALI   |      3 |
+| HARRY |      5 |
+| RIO   |      3 |
++-------+--------+
+
+8. Use the soundex function to search for a supplier by the name of ‘BLOKE
+ans-select sname from supplier where soundex(sname)=soundex('BLOKE');
+Empty set (0.00 sec)
