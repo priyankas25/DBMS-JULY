@@ -1,0 +1,75 @@
+			assignment-7
+
+1) Write a query that counts all orders for October 3.
+
+ans-  select count(*) from orders where odate = '1990-10-03';
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+
+2) Write a query that counts the number of different non-NULL city values in the 
+Customers table.
+
+ans-  select * from customers where city is not null;
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2007 | Pereira  | Rome     |    100 | 1004 |
+| 2008 | Cisneros | San joes |    300 | 1007 |
++------+----------+----------+--------+------+
+
+3) Write a query that selects each customer’s smallest order.
+
+ans-  select cname, min(amt),odate from orders,customers where orders.cnum = customers.cnum group by customers.cname;
++----------+----------+------------+
+| cname    | min(amt) | odate      |
++----------+----------+------------+
+| Hoffman  |   767.19 | 1990-10-03 |
+| Liu      |  5160.45 | 1990-10-03 |
+| Grass    |    75.75 | 1990-10-04 |
+| Clemens  |  4723.00 | 1990-10-05 |
+| Pereira  |  1900.10 | 1990-10-03 |
+| Cisneros |    18.69 | 1990-10-03 |
++----------+----------+------------+
+
+4) Write a query that selects the first customer, in alphabetical order, whose name 
+begins with G.
+ans -  select cname from customers where cname like 'G%' order by cname limit 1;
++----------+
+| cname    |
++----------+
+| Giovanni |
++----------+
+
+5) Write a query that selects the highest rating in each city.
+
+ans-  select city, max(rating) from customers group by city;
++----------+-------------+
+| city     | max(rating) |
++----------+-------------+
+| London   |         100 |
+| Rome     |         200 |
+| San Jose |         200 |
+| Berlin   |         300 |
+| San joes |         300 |
++----------+-------------+
+
+6) Write a query that counts the number of salespeople registering orders for each 
+day. (If a salesperson has more than one order on a given day, he or she should be counted only once.).
+
+ans-   select count(distinct snum) from orders group by odate;
++----------------------+
+| count(distinct snum) |
++----------------------+
+|                    4 |
+|                    2 |
+|                    1 |
+|                    2 |
++----------------------+
